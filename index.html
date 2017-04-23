@@ -3,23 +3,74 @@
 
 <head>
   <title> Welcome,my friends~ </title>
-</head>
-<body background = "http://www.bunbunhk.com/GIF/14/09.gif">
- 
- <script>
-  $(document).ready(function() {
-      $("h2").addClass("animated bounce");
-      $("h1").addClass("animated shake");
-      $("#menu").slideDown("slow"); 
-  });
-</script> 
+  <style>
+#menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	width: 500px;
+	float: left;
+	background: #000;
+}
+#menu li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	border-right: 1px solid #999;
+}
+#menu li a {
+	padding: 10px 15px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+#menu li ul {
+	margin: 0;
+	padding: 15px 0;
+	list-style: none;
+	float: left;
+	position: absolute;
+	left: 0;
+	width: 500px;
+	color: #fff;
+	background: #06c url('bottom.gif') no-repeat bottom;
+	display: none;
+}
+#menu li ul li { border-right: 1px solid #fff; }
+#menu li ul li a { display: inline; }
+#menu li ul li a:hover { text-decoration: underline; }
+</style>
+
   
- <script> 
-$("#menu").slideDown(); 
- </script> 
-    
-<div>
-    <style>
+  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 幫 #menu li 加上 hover 事件
+	$('#menu li').hover(function(){
+		// 先找到 li 中的子選單
+		var _this = $(this),
+			_subnav = _this.children('ul');
+ 
+		// 變更目前母選項的背景顏色
+		// 同時顯示子選單(如果有的話)
+		_this.css('backgroundColor', '#06c');
+		_subnav.css('display', 'block');
+	} , function(){
+		// 變更目前母選項的背景顏色
+		// 同時隱藏子選單(如果有的話)
+		// 也可以把整句拆成上面的寫法
+		$(this).css('backgroundColor', '').children('ul').css('display', 'none');
+	});
+ 
+	// 取消超連結的虛線框
+	$('a').focus(function(){
+		this.blur();
+	});
+});
+
+</script>
+  <style>
         .smaller-image{
            width:150px;
         }
@@ -49,17 +100,30 @@ $("#menu").slideDown();
         }
         
 </style>
-<style type="text/css">  
-  #menu {display: none}  
-</style>
-  <ul id="menu">
-  <h1>Education </h1>
-  <li><a href="http://www.wfp.ks.edu.tw/index_WFP.htm">Wu-Fu Elementary School</a></li>   
-  <li><a href="http://www.rssh.kh.edu.tw/index3.php">Ruei-Siang Junior High School</a></li>  
-  <li><a href="http://www.fssh.khc.edu.tw/index.asp">Feng-Shan Senior High School</a></li>  
-  <li><a href="http://www.fju.edu.tw/#&panel1-1">Fu-Jen University</a></li>  
-</ul>  
- </div>
+</head>
+<body background = "http://www.bunbunhk.com/GIF/14/09.gif">
+ <ul id="menu">
+		<li>Education
+			<ul>
+				<li><a href="http://www.wfp.ks.edu.tw/index_WFP.htm">Wu-Fu Elementary School</a></li>   
+                                <li><a href="http://www.rssh.kh.edu.tw/index3.php">Ruei-Siang Junior High School</a></li>  
+                                <li><a href="http://www.fssh.khc.edu.tw/index.asp">Feng-Shan Senior High School</a></li>  
+                                <li><a href="http://www.fju.edu.tw/#&panel1-1">Fu-Jen University</a></li>  
+
+			</ul>
+		</li>
+		
+		<li>Websites
+			<ul>
+				<li><a href="https://tw.yahoo.com/">Yahoo!奇摩</a></li>
+				<li><a href="https://www.google.com.tw/">Google</a></li>
+				<li><a href="https://www.youtube.com/?gl=TW&hl=zh-tw">Youtube</a></li>
+				
+			</ul>
+		</li>
+</ul>
+
+
         
    <div>
       <marquee direction = "left" behavior = "altemate">
